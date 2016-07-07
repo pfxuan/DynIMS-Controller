@@ -1,0 +1,12 @@
+{
+    "zookeeper.host" : "localhost:2181",
+    "key.deserializer" : "org.apache.kafka.common.serialization.StringDeserializer",
+    "value.deserializer" : "org.apache.kafka.common.serialization.LongDeserializer",
+    "group.id" : "testGroup",
+    "bootstrap.servers" : "localhost:9092",
+    "backoff.increment.ms" : "100",
+    "autooffset.reset" : "smallest",
+    "topics" : ["controller"],
+    "eventbus.address" : "kafka.to.vertx.bridge",
+    "consumer.poll.interval.ms" : 1000
+}
