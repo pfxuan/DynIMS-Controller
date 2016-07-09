@@ -8,6 +8,7 @@ import edu.clemson.bigdata.tls.handlers.AlluxioEvictor;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.DeploymentOptions;
+import io.vertx.core.eventbus.MessageConsumer;
 import io.vertx.core.json.JsonObject;
 
 import java.io.IOException;
@@ -43,11 +44,12 @@ public class ControllerVerticle extends AbstractVerticle {
       }
     );
 
-    vertx.eventBus().consumer(config().getString("eventbus.address"),
-      message -> {
+    MessageConsumer<JsonObject> consumer = vertx.eventBus().consumer(config().getString("eventbus.address"));
+
+    consumer.handler(message -> {
         // System.out.println(String.format("got message: %s", message.body()));
         // message handling code
-        KafkaEvent event = new KafkaEvent((JsonObject) message.body());
+        KafkaEvent event = new KafkaEvent(message.body());
         String evcitionMsg[] = event.value.split("\\t");
         String hostname = evcitionMsg[0];
         long inMemSize = Long.parseLong(evcitionMsg[1]);
