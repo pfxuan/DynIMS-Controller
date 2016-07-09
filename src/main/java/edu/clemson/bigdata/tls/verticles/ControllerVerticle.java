@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * This verticle is used to run TLS-Controller.
  */
-public class MyFirstVerticle extends AbstractVerticle {
+public class ControllerVerticle extends AbstractVerticle {
   //private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(MyFirstVerticle.class);
 
   /**
