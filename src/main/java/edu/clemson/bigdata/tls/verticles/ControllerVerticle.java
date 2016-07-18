@@ -32,7 +32,7 @@ public class ControllerVerticle extends AbstractVerticle {
   @Override
   public void start(Future<Void> future) {
     // deploy the consumer verticle
-    vertx.deployVerticle(SimpleConsumer.class.getName(), new DeploymentOptions().setConfig(config()),
+    vertx.deployVerticle(SimpleConsumer.class.getName(), new DeploymentOptions().setWorker(true).setConfig(config()),
       deploy -> {
         if(deploy.failed()) {
           System.err.println(String.format("Failed to start kafka consumer verticle, ex: %s", deploy.cause()));

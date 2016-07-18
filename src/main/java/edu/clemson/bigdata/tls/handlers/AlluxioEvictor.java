@@ -3,8 +3,6 @@ package edu.clemson.bigdata.tls.handlers;
 import java.io.IOException;
 
 import alluxio.client.block.AlluxioBlockStore;
-import alluxio.client.file.FileSystem;
-import alluxio.Configuration;
 
 /**
  * Created by pxuan on 1/31/16.
